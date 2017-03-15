@@ -12,6 +12,6 @@
     "dist/build.min.css",
     "build/build.js",
     "build/bundle-css.js",
-    "watch.js"
+    "build/watch.js"
   ]
 }
