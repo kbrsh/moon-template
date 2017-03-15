@@ -1,0 +1,17 @@
+{
+  "files": [
+    "index.html",
+    "moonfile.js",
+    "package.json",
+    "README.md",
+    ".gitignore",
+    "js/scripts.js",
+    "js/components/header.moon",
+    "css/styles.css",
+    "dist/build.min.js",
+    "dist/build.min.css",
+    "build/build.js",
+    "build/bundle-css.js",
+    "watch.js"
+  ]
+}
