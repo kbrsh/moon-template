@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const CleanCSS = require('clean-css');
 const isProduction = process.env.NODE_ENV === "production";
-const builtCSSPath = path.join('dist', 'build.min.css');
+const builtCSSPath = path.join('dist', 'css', 'build.min.css');
 
 // Get all css files
 const cssDir = path.join(process.cwd(), "css");
