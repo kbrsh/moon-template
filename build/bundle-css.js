@@ -5,6 +5,10 @@ const CleanCSS = require('clean-css');
 const isProduction = process.env.NODE_ENV === "production";
 let builtCSSPath = path.join('dist', 'css', 'build.min.css');
 
+if(!fs.existsSync(builtCSSPath)) {
+  fs.writeFileSync(builtCSSPath);
+}
+
 // Get all css files
 const cssDir = path.join(process.cwd(), "css");
 const cssFiles = fs.readdirSync(cssDir);
