@@ -13,6 +13,7 @@
     "dist/index.html",
     "build/build.js",
     "build/bundle-css.js",
-    "build/watch.js"
+    "build/watch.js",
+    "build/util.js"
   ]
 }
