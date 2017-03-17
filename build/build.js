@@ -1,13 +1,23 @@
 const browserify = require("browserify");
-const bundler = browserify('./js/scripts.js');
+const crypto = require('crypto');
 const minifyHTML = require('html-minifier').minify;
+
 const fs = require('fs');
 const path = require('path');
+
+const util = require('./util.js');
+const bundler = browserify('./js/scripts.js');
+
 const cwd = process.cwd();
 
-let builtFile = fs.createWriteStream(path.join(cwd, 'dist', 'js', 'build.min.js'));
+let jsHash = "min";
+let cssHash = "min";
 
-// Build All Components
+// Empty `dist` Directory
+util.empty(path.join(cwd, 'dist'))
+
+// Build JS
+const tmpJSPath = path.join(cwd, 'dist', 'js', `build.min.js`);
 bundler.transform({
     global: true,
     ignore: [
@@ -17,19 +27,28 @@ bundler.transform({
   }, 'uglifyify')
   .plugin('moonify/plugins/extract-css.js')
   .bundle()
-  .pipe(builtFile)
+  .pipe(fs.createWriteStream(tmpJSPath));
 
 // Build CSS
 bundler.on('bundle', function(bs) {
   bs.on('end', function() {
-    require("./bundle-css.js");
+    jsHash = crypto.createHash("md5").update(fs.readFileSync(tmpJSPath).toString()).digest("hex").slice(-7);
+    fs.renameSync(tmpJSPath, path.join(cwd, 'dist', 'js', `build.${jsHash}.js`));
+    cssHash = require("./bundle-css.js");
+    buildHTML();
   });
 });
 
 // Build HTML
-const minifiedHTML = minifyHTML(fs.readFileSync(path.join(cwd, 'index.html')), {
-  caseSensitive: true,
-  keepClosingSlash: true
-});
+const buildHTML = function() {
+  let minifiedHTML = minifyHTML(fs.readFileSync(path.join(cwd, 'index.html')).toString(), {
+    caseSensitive: true,
+    keepClosingSlash: true,
+    removeAttributeQuotes: false,
+    collapseWhitespace: true
+  });
 
-fs.writeFileSync(path.join(cwd, 'dist', 'index.html'), minifiedHTML);
+  minifiedHTML = minifiedHTML.replace(/<link\s+([^>]*?\s+)?href="(\.?\/dist\/([^".]*)\.([^".]*)\.([^".]*))"/gi, `<link $1href="./js/$3.${cssHash}.$5"`).replace(/<script\s+([^>]*?\s+)?src="(\.?\/dist\/([^".]*)\.([^".]*)\.([^".]*))"/gi, `<script $1src="./js/$3.${jsHash}.$5"`);
+
+  fs.writeFileSync(path.join(cwd, 'dist', 'index.html'), minifiedHTML);
+}

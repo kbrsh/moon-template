@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const CleanCSS = require('clean-css');
 const isProduction = process.env.NODE_ENV === "production";
-const builtCSSPath = path.join('dist', 'css', 'build.min.css');
+let builtCSSPath = path.join('dist', 'css', 'build.min.css');
 
 // Get all css files
 const cssDir = path.join(process.cwd(), "css");
@@ -15,8 +16,14 @@ for(var i = 0; i < cssFiles.length; i++) {
 }
 
 // If in Production, be sure to Include CSS from Components
+// Also Expose the Hash
 if(isProduction) {
-  css += fs.readFileSync(builtCSSPath)
+  css += fs.readFileSync(builtCSSPath);
+
+  const hash = crypto.createHash("md5").update(css).digest("hex").slice(-7);
+  fs.unlinkSync(builtCSSPath);
+  builtCSSPath = path.join('dist', 'css', `build.${hash}.css`);
+  module.exports = hash;
 }
 
 // Optimize CSS
