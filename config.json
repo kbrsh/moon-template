@@ -8,8 +8,8 @@
     "js/scripts.js",
     "js/components/header.moon",
     "css/styles.css",
-    "dist/build.min.js",
-    "dist/build.min.css",
+    "dist/js/build.min.js",
+    "dist/css/build.min.css",
     "build/build.js",
     "build/bundle-css.js",
     "build/watch.js"
