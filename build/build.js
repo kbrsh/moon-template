@@ -32,7 +32,7 @@ bundler.transform({
 // Build CSS
 bundler.on('bundle', function(bs) {
   bs.on('end', function() {
-    jsHash = crypto.createHash("md5").update(fs.readFileSync(tmpJSPath).toString()).digest("hex").slice(-7);
+    jsHash = crypto.createHash("md5").update(fs.readFileSync(tmpJSPath).toString()).digest("hex").slice(-10);
     fs.renameSync(tmpJSPath, path.join(cwd, 'dist', 'js', `build.${jsHash}.js`));
     cssHash = require("./bundle-css.js");
     buildHTML();

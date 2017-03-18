@@ -24,7 +24,7 @@ for(var i = 0; i < cssFiles.length; i++) {
 if(isProduction) {
   css += fs.readFileSync(builtCSSPath);
 
-  const hash = crypto.createHash("md5").update(css).digest("hex").slice(-7);
+  const hash = crypto.createHash("md5").update(css).digest("hex").slice(-10);
   fs.unlinkSync(builtCSSPath);
   builtCSSPath = path.join('dist', 'css', `build.${hash}.css`);
   module.exports = hash;
