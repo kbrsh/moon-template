@@ -1,5 +1,7 @@
 "use strict";
 
+process.env.NODE_ENV = "production";
+
 const browserify = require("browserify");
 const crypto = require('crypto');
 const minifyHTML = require('html-minifier').minify;
