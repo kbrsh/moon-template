@@ -7,8 +7,8 @@
     "serve": "http-server -o -c 1 -a localhost",
     "bundle-css": "node ./build/bundle-css.js",
     "watch-css": "node ./build/watch.js",
-    "dev": "npm-run-all --parallel watch serve watch-css bundle-css",
-    "build": "node build/build.js"
+    "dev": "cross-env NODE_ENV=development npm-run-all --parallel watch serve watch-css bundle-css",
+    "build": "cross-env NODE_ENV=production node build/build.js"
   },
   "browserify": {
     "transform": [
@@ -21,6 +21,7 @@
   "devDependencies": {
     "browserify": "14.1.0",
     "clean-css": "4.0.8",
+    "cross-env": "^4.0.0",
     "html-minifier": "^3.4.1",
     "http-server": "0.9.0",
     "moonify": "0.0.10",
