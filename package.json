@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "{{description}}",
   "scripts": {
-    "watch": "./node_modules/.bin/watchify -vd -e js/scripts.js -o dist/js/build.min.js",
+    "watch": "./node_modules/.bin/watchify -vd -e js/scripts.js -o dist/js/build.min.js -p browserify-hmr",
     "serve": "http-server -o -c 1 -a localhost",
     "bundle-css": "node ./build/bundle-css.js",
     "watch-css": "node ./build/watch.js",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "browserify": "14.1.0",
+    "browserify-hmr": "0.3.5",
     "clean-css": "4.0.8",
     "cross-env": "^4.0.0",
     "html-minifier": "^3.4.1",
