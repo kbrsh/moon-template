@@ -9,7 +9,7 @@ module.exports.empty = (dir) => {
     return;
   }
   const files = fs.readdirSync(dir);
-  for(var i = 0; i < files.length; i++) {
+  for(let i = 0; i < files.length; i++) {
     let filePath = path.join(dir, files[i]);
     if(fs.existsSync(filePath)) {
       module.exports.empty(filePath);

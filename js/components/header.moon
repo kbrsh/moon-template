@@ -11,6 +11,6 @@
 </style>
 <script>
   exports = {
-    props: ['content']
+    props: ["content"]
   }
 </script>
