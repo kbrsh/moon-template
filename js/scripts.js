@@ -2,7 +2,7 @@
   Primary Application Code
 =============================*/
 
-var Moon = require("moonjs");
+const Moon = require("moonjs");
 require("./components/header.moon")(Moon);
 
 new Moon({
