@@ -21,13 +21,11 @@ util.empty(path.join(cwd, "dist"))
 // Build JS
 const tmpJSPath = path.join(cwd, "dist", "js", `build.min.js`);
 bundler
-  .transform({
-    global: true,
-    ignore: [
-      "*.moon",
-      "*.css"
-    ]
-  }, "uglifyify")
+  .transform("moonify")
+  .transform("bubleify", {
+    extensions: [".js", ".moon"]
+  })
+  .transform("uglifyify")
   .plugin("moonify/plugins/extract-css.js")
   .bundle()
   .pipe(fs.createWriteStream(tmpJSPath));
