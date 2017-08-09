@@ -23,7 +23,7 @@
     "http-server": "0.9.0",
     "moonify": "0.0.15",
     "npm-run-all": "^2.3.0",
-    "slashjs": "^0.1.0",
+    "slashjs": "^1.0.0",
     "uglify-js": "latest",
     "uglifyify": "3.0.4",
     "watchify": "3.9.0"
