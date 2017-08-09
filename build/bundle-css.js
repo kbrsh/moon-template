@@ -26,7 +26,7 @@ for(let i = 0; i < cssFiles.length; i++) {
 if(isProduction) {
   css += fs.readFileSync(builtCSSPath);
 
-  const hash = Slash(css);
+  const hash = Slash(css).toLowerCase();
   fs.unlinkSync(builtCSSPath);
   builtCSSPath = path.join("dist", "css", `build.${hash}.css`);
   module.exports = hash;
