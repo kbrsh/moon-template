@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const crypto = require("crypto");
+const Slash = require("slashjs");
 const CleanCSS = require("clean-css");
 const isProduction = process.env.NODE_ENV === "production";
 let builtCSSPath = path.join("dist", "css", "build.min.css");
@@ -26,7 +26,7 @@ for(let i = 0; i < cssFiles.length; i++) {
 if(isProduction) {
   css += fs.readFileSync(builtCSSPath);
 
-  const hash = crypto.createHash("md5").update(css).digest("hex").slice(-10);
+  const hash = Slash(css);
   fs.unlinkSync(builtCSSPath);
   builtCSSPath = path.join("dist", "css", `build.${hash}.css`);
   module.exports = hash;

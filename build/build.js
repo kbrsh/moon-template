@@ -1,7 +1,7 @@
 "use strict";
 
 const browserify = require("browserify");
-const crypto = require("crypto");
+const Slash = require("slashjs");
 const minifyHTML = require("html-minifier").minify;
 
 const fs = require("fs");
@@ -33,7 +33,7 @@ bundler
 // Build CSS
 bundler.on("bundle", function(bs) {
   bs.on("end", function() {
-    jsHash = crypto.createHash("md5").update(fs.readFileSync(tmpJSPath).toString()).digest("hex").slice(-10);
+    jsHash = Slash(fs.readFileSync(tmpJSPath).toString());
     fs.renameSync(tmpJSPath, path.join(cwd, "dist", "js", `build.${jsHash}.js`));
     cssHash = require("./bundle-css.js");
     buildHTML();
