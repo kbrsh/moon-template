@@ -1,12 +1,8 @@
 "use strict";
 
 const fs = require("fs")
-const spawn = require("child_process").spawn;
+const exec = require("child_process").execSync;
 
-fs.watch("css", {
-    recursive: true
-}, (e, file) => {
-    const p = spawn("npm", ["run", "bundle-css"], {
-        stdio: "inherit"
-    });
+fs.watch("css", {}, (e, file) => {
+  exec("npm run bundle-css");
 });
