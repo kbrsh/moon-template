@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "parcel": "latest",
-    "parcel-plugin-moonjs": "latest"
+    "parcel-plugin-moon": "latest"
   }
 }
