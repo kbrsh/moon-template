@@ -1,5 +1,5 @@
 import Moon from "moon";
-import Index from "./components/Index/index.mvl";
+import Index from "./components/Index.mvl";
 
 Moon({
 	root: "#root",

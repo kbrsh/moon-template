@@ -1,0 +1,15 @@
+<h1>{content}</h1>
+
+<style>
+	h1 {
+		font-size: 50px;
+		font-weight: 300;
+		font-family: -apple-system, BlinkMacSystemFont, Avenir, "Avenir Next", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	}
+</style>
+
+<script>
+	export default {
+		content: "Moon"
+	};
+</script>
