@@ -6,7 +6,8 @@
 	  "build": "NODE_ENV=\"production\" parcel build *.html"
   },
   "dependencies": {
-    "moon": "latest"
+    "moon": "latest",
+    "moon-mvl": "latest"
   },
   "devDependencies": {
     "parcel": "latest",
