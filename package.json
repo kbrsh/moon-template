@@ -1,23 +1,24 @@
 {
-  "name": "{# MoonName #}",
-  "version": "0.0.0",
-  "scripts": {
-	  "dev": "NODE_ENV=\"development\" webpack --config webpack.config.js",
-	  "build": "NODE_ENV=\"production\" webpack --config webpack.config.js"
-  },
-  "dependencies": {
-    "moon": "latest",
-    "moon-compiler": "latest"
-  },
-  "devDependencies": {
-    "@babel/core": "latest",
-    "@babel/preset-env": "latest",
-    "babel-loader": "latest",
-	 "css-loader": "latest",
-	 "html-loader": "latest",
-	 "html-webpack-plugin": "latest",
-    "moon-loader": "latest",
-    "style-loader": "latest",
-    "webpack": "latest"
-  }
+	"name": "{# MoonName #}",
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "NODE_ENV=\"development\" webpack --config webpack.config.js",
+		"build": "NODE_ENV=\"production\" webpack --config webpack.config.js"
+	},
+	"dependencies": {
+		"moon": "latest",
+		"moon-compiler": "latest"
+	},
+	"devDependencies": {
+		"@babel/core": "latest",
+		"@babel/preset-env": "latest",
+		"babel-loader": "latest",
+		"css-loader": "latest",
+		"html-loader": "latest",
+		"html-webpack-plugin": "latest",
+		"moon-loader": "latest",
+		"style-loader": "latest",
+		"webpack": "latest",
+		"webpack-cli": "latest"
+	}
 }
