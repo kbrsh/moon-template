@@ -1,10 +1,10 @@
 .Index {
 	margin-top: 300px;
+	font-family: Helvetica;
+	font-weight: 200;
+	text-align: center;
 }
 
 .Index-title {
-	font-family: Helvetica;
 	font-size: 55px;
-	font-weight: 200;
-	text-align: center;
 }
