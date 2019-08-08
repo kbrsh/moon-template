@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
 	mode: process.env.NODE_ENV,
-	entry: "/src/index.js",
+	entry: "./src/index.js",
 	output: {
 		filename: "index.[chunkhash:8].js",
 		path: path.resolve(__dirname, "dist")
