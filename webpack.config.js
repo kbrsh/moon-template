@@ -6,8 +6,8 @@ module.exports = {
 	mode: process.env.NODE_ENV,
 	entry: "./src/index.js",
 	output: {
-		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[chunkhash:8].js",
-		chunkFilename: process.env.NODE_ENV === "development" ? "[name].js" : "[name].[chunkhash:8].js",
+		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[contenthash:8].js",
+		chunkFilename: process.env.NODE_ENV === "development" ? "[name].js" : "[name].[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	module: {
@@ -49,8 +49,8 @@ module.exports = {
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
-			filename: "[name].css",
-			chunkFilename: "[name].css"
+			filename: process.env.NODE_ENV === "development" ? "[name].css" : "[name].[contenthash:8].css",
+			chunkFilename: process.env.NODE_ENV === "development" ? "[name].css" : "[name].[contenthash:8].css"
 		})
 	],
 	optimization: {
