@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -54,6 +56,7 @@ module.exports = {
 		})
 	],
 	optimization: {
+		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
 		splitChunks: {
 			cacheGroups: {
 				styles: {

@@ -18,6 +18,8 @@
 		"html-webpack-plugin": "latest",
 		"mini-css-extract-plugin": "latest",
 		"moon-loader": "latest",
+		"optimize-css-assets-webpack-plugin": "latest",
+		"terser-webpack-plugin": "latest",
 		"webpack": "latest",
 		"webpack-cli": "latest",
 		"webpack-dev-server": "latest"
