@@ -19,7 +19,12 @@ module.exports = {
 			{
 				test: /\.css/,
 				use: [
-					{ loader: MiniCssExtractPlugin.loader },
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: process.env.NODE_ENV === "development"
+						}
+					},
 					{ loader: "css-loader" }
 				]
 			},
@@ -44,7 +49,8 @@ module.exports = {
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
-			filename: "[name].css"
+			filename: "[name].css",
+			chunkFilename: "[name].css"
 		})
 	],
 	optimization: {
