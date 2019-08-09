@@ -58,7 +58,7 @@ module.exports = {
 			chunkFilename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css"
 		}),
 		new CopyPlugin([
-			{ from: "public", to: "dist", ignore: ["index.html"] }
+			{ from: "public", to: "", ignore: ["index.html"] }
 		])
 	],
 	optimization: {
@@ -75,7 +75,6 @@ module.exports = {
 		}
 	},
 	devServer: {
-		contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "public")],
 		hot: true,
 		open: true
 	}
