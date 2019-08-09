@@ -1,12 +1,17 @@
 .Index {
-	margin-top: 300px;
+	margin-top: 210px;
 	font-family: Helvetica;
 	text-align: center;
 }
 
+.Index > * {
+	margin-top: 0;
+	margin-bottom: 21px;
+}
+
 .Index-image {
-	width: 136px;
-	height: 136px;
+	width: 120px;
+	height: 120px;
 }
 
 .Index-title {
