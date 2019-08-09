@@ -1,15 +1,17 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const path = require("path");
 
 module.exports = {
 	mode: process.env.NODE_ENV,
 	entry: "./src/index.js",
 	output: {
-		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[contenthash:8].js",
-		chunkFilename: process.env.NODE_ENV === "development" ? "[name].js" : "[name].[contenthash:8].js",
+		filename: process.env.NODE_ENV === "development" ? "js/index.js" : "js/index.[contenthash:8].js",
+		chunkFilename: process.env.NODE_ENV === "development" ? "js/[name].js" : "js/[name].[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	module: {
@@ -46,14 +48,18 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "index.html",
+			template: "./public/index.html",
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
-			filename: process.env.NODE_ENV === "development" ? "[name].css" : "[name].[contenthash:8].css",
-			chunkFilename: process.env.NODE_ENV === "development" ? "[name].css" : "[name].[contenthash:8].css"
-		})
+			filename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css",
+			chunkFilename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css"
+		}),
+		new CopyPlugin([
+			{ from: "public", to: "dist", ignore: ["index.html"] }
+		])
 	],
 	optimization: {
 		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -69,7 +75,7 @@ module.exports = {
 		}
 	},
 	devServer: {
-		contentBase: "/dist/",
+		contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "public")],
 		hot: true,
 		open: true
 	}
