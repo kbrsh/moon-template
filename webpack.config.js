@@ -5,7 +5,7 @@ module.exports = {
 	mode: process.env.NODE_ENV,
 	entry: "./src/index.js",
 	output: {
-		filename: "index.[chunkhash:8].js",
+		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[chunkhash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	module: {
