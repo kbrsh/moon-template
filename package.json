@@ -2,7 +2,7 @@
 	"name": "{# MoonName #}",
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "NODE_ENV=\"development\" webpack --config webpack.config.js",
+		"dev": "NODE_ENV=\"development\" webpack-dev-server --config webpack.config.js",
 		"build": "NODE_ENV=\"production\" webpack --config webpack.config.js"
 	},
 	"dependencies": {
@@ -19,6 +19,7 @@
 		"moon-loader": "latest",
 		"style-loader": "latest",
 		"webpack": "latest",
-		"webpack-cli": "latest"
+		"webpack-cli": "latest",
+		"webpack-dev-server": "latest"
 	}
 }

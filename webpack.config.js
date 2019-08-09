@@ -41,5 +41,11 @@ module.exports = {
 			template: "index.html",
 			filename: "index.html"
 		})
-	]
+	],
+	devServer: {
+		contentBase: "/dist/",
+		hot: true,
+		open: true,
+		progress: true
+	}
 };
