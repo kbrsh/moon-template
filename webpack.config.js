@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
@@ -14,11 +13,17 @@ module.exports = {
 		chunkFilename: process.env.NODE_ENV === "development" ? "js/[name].js" : "js/[name].[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
+	resolve: {
+		modules: [
+			path.resolve(__dirname, "src"),
+			"node_modules"
+		]
+	},
 	module: {
 		rules: [
 			{
 				test: /\.html$/,
-				use: [ { loader: "html-loader" } ]
+				use: [{ loader: "html-loader" }]
 			},
 			{
 				test: /\.css/,
@@ -44,22 +49,30 @@ module.exports = {
 					},
 					{ loader: "moon-loader" }
 				]
+			},
+			{
+				test: /\.(png|jpg|gif)$/,
+				use: [
+					{
+						loader: "file-loader",
+						options: {
+							name: process.env.NODE_ENV === "development" ? "images/[name].[ext]" : "images/[name].[contenthash:8].[ext]"
+						}
+					}
+				]
 			}
 		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./public/index.html",
+			template: "./src/index.html",
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
 			filename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css",
 			chunkFilename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css"
-		}),
-		new CopyPlugin([
-			{ from: "public", to: "", ignore: ["index.html"] }
-		])
+		})
 	],
 	optimization: {
 		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
