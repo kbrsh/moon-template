@@ -16,7 +16,6 @@
 		"clean-webpack-plugin": "latest",
 		"css-loader": "latest",
 		"file-loader": "latest",
-		"html-loader": "latest",
 		"html-webpack-plugin": "latest",
 		"mini-css-extract-plugin": "latest",
 		"moon-loader": "latest",
