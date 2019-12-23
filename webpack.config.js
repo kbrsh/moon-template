@@ -1,8 +1,8 @@
+const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const path = require("path");
 
 module.exports = {
@@ -10,7 +10,6 @@ module.exports = {
 	entry: "./src/index.js",
 	output: {
 		filename: process.env.NODE_ENV === "development" ? "js/index.js" : "js/index.[contenthash:8].js",
-		chunkFilename: process.env.NODE_ENV === "development" ? "js/[name].js" : "js/[name].[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	resolve: {
@@ -22,18 +21,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: process.env.NODE_ENV === "development"
-						}
-					},
-					{ loader: "css-loader" }
-				]
-			},
-			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [
@@ -44,6 +31,18 @@ module.exports = {
 						}
 					},
 					{ loader: "moon-loader" }
+				]
+			},
+			{
+				test: /\.css/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: process.env.NODE_ENV === "development"
+						}
+					},
+					{ loader: "css-loader" }
 				]
 			},
 			{
@@ -67,7 +66,6 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css",
-			chunkFilename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css"
 		})
 	],
 	optimization: {

@@ -1,6 +1,4 @@
 import Moon from "moon";
-
-import "view/Index.css";
 import moonLogo from "images/moon-logo.png";
 
 export default ({ data }) => (

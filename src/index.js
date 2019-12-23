@@ -1,5 +1,6 @@
 import Moon from "moon";
 import Index from "view/Index";
+import "index.css";
 
 Moon.use({
 	data: Moon.data.driver({
