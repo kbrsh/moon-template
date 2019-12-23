@@ -1,0 +1,39 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica;
+	text-align: center;
+}
+
+div {
+	display: flex;
+}
+
+h1 {
+	font-size: 55px;
+}
+
+p {
+	font-size: 21px;
+	font-weight: 200;
+}
+
+.w-15 {
+	width: 120px;
+}
+
+.h-15 {
+	height: 120px;
+}
+
+.p-20 {
+	padding: 210px;
+}
+
+.x-c {
+	justify-content: center;
+}
+
+.s-3 > * {
+	margin: 6px;
+}

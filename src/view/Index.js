@@ -4,9 +4,9 @@ import "view/Index.css";
 import moonLogo from "images/moon-logo.png";
 
 export default ({ data }) => (
-	<div class="Index">
-		<img class="Index-image" src={moonLogo} alt="Moon logo"/>
-		<h1 class="Index-title">{data.name}</h1>
-		<p class="Index-paragraph">Jump into the <a href="https://kbrsh.github.io/moon/doc/guide.html" target="_blank">guide</a> to get started.</p>
+	<div class="p-20 x-c s-5">
+		<img class="w-15 h-15" src={moonLogo} alt="Moon logo"/>
+		<h1>{data.name}</h1>
+		<p>Jump into the <a href="https://kbrsh.github.io/moon/doc/guide.html" target="_blank">guide</a> to get started.</p>
 	</div>
 );
