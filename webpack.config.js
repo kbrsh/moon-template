@@ -9,7 +9,7 @@ module.exports = {
 	mode: process.env.NODE_ENV,
 	entry: "./src/index.js",
 	output: {
-		filename: process.env.NODE_ENV === "development" ? "js/index.js" : "js/index.[contenthash:8].js",
+		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	resolve: {
@@ -65,21 +65,11 @@ module.exports = {
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
-			filename: process.env.NODE_ENV === "development" ? "css/[name].css" : "css/[name].[contenthash:8].css",
+			filename: process.env.NODE_ENV === "development" ? "index.css" : "index.[contenthash:8].css",
 		})
 	],
 	optimization: {
-		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
-		splitChunks: {
-			cacheGroups: {
-				styles: {
-					name: "styles",
-					test: /\.css$/,
-					chunks: "all",
-					enforce: true
-				}
-			}
-		}
+		minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
 	},
 	devServer: {
 		hot: true,
