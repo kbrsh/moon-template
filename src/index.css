@@ -30,8 +30,16 @@ p {
 	padding: 210px;
 }
 
-.x-c {
+.d-y {
+	flex-direction: column;
+}
+
+.a-m-c {
 	justify-content: center;
+}
+
+.a-c-c {
+	align-items: center;
 }
 
 .s-3 > * {
