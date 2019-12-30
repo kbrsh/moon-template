@@ -2,7 +2,10 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font-family: Helvetica;
-	text-align: center;
+}
+
+#root {
+	width: 100%;
 }
 
 div {
@@ -18,30 +21,13 @@ p {
 	font-weight: 200;
 }
 
-.w-15 {
-	width: 120px;
-}
+.s-x-15 {width: 120px;}
+.s-y-15 {height: 120px;}
 
-.h-15 {
-	height: 120px;
-}
+.a-x-c {justify-content: center;}
 
-.p-20 {
-	padding: 210px;
-}
+.p-x-20 {padding-left: 210px; padding-right: 210px;}
+.p-y-20 {padding-top: 210px; padding-bottom: 210px;}
 
-.d-y {
-	flex-direction: column;
-}
-
-.a-m-c {
-	justify-content: center;
-}
-
-.a-c-c {
-	align-items: center;
-}
-
-.s-3 > * {
-	margin: 6px;
-}
+.m-x-3 > * {margin-left: 6px; margin-right: 6px;}
+.m-y-3 > * {margin-top: 6px; margin-bottom: 6px;}
