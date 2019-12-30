@@ -23,10 +23,11 @@ p {
 
 .s-x-15 {width: 120px;}
 .s-y-15 {height: 120px;}
+.s-x-25 {width: 325px;}
 
 .a-x-c {justify-content: center;}
+.a-t-c {text-align: center;}
 
-.p-x-20 {padding-left: 210px; padding-right: 210px;}
 .p-y-20 {padding-top: 210px; padding-bottom: 210px;}
 
 .m-x-3 > * {margin-left: 6px; margin-right: 6px;}
