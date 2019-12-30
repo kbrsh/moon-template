@@ -10,6 +10,7 @@ html, body {
 
 div {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 h1 {
@@ -30,5 +31,4 @@ p {
 
 .p-y-20 {padding-top: 210px; padding-bottom: 210px;}
 
-.m-x-3 > * {margin-left: 6px; margin-right: 6px;}
 .m-y-3 > * {margin-top: 6px; margin-bottom: 6px;}
