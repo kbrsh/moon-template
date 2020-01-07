@@ -5,7 +5,8 @@ html, body {
 }
 
 #root {
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 }
 
 div {
@@ -27,8 +28,7 @@ p {
 .s-x-25 {width: 325px;}
 
 .a-x-c {justify-content: center;}
+.a-y-l-c {align-items: center;}
 .a-t-c {text-align: center;}
-
-.p-y-20 {padding-top: 210px; padding-bottom: 210px;}
 
 .m-y-3 > * {margin-top: 6px; margin-bottom: 6px;}
