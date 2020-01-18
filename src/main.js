@@ -1,6 +1,6 @@
 import Moon from "moon";
 import view from "view/index";
-import "index.css";
+import "main.css";
 
 Moon.use({
 	data: Moon.data.driver,
@@ -14,6 +14,6 @@ Moon.run(() => {
 
 	return {
 		data,
-		view: <view.main data=data/>
+		view: <view.home data=data/>
 	};
 });

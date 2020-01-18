@@ -7,9 +7,9 @@ const path = require("path");
 
 module.exports = {
 	mode: process.env.NODE_ENV,
-	entry: "./src/index.js",
+	entry: "./src/main.js",
 	output: {
-		filename: process.env.NODE_ENV === "development" ? "index.js" : "index.[contenthash:8].js",
+		filename: process.env.NODE_ENV === "development" ? "main.js" : "main.[contenthash:8].js",
 		path: path.resolve(__dirname, "dist")
 	},
 	resolve: {
@@ -61,11 +61,11 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./src/index.html",
+			template: "./src/main.html",
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
-			filename: process.env.NODE_ENV === "development" ? "index.css" : "index.[contenthash:8].css",
+			filename: process.env.NODE_ENV === "development" ? "main.css" : "main.[contenthash:8].css",
 		})
 	],
 	optimization: {

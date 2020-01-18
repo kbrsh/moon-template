@@ -1,6 +1,7 @@
 {
 	"name": "{# MoonName #}",
 	"version": "0.0.0",
+	"private": true,
 	"scripts": {
 		"dev": "NODE_ENV=\"development\" webpack-dev-server --config webpack.config.js",
 		"build": "NODE_ENV=\"production\" webpack --config webpack.config.js"
