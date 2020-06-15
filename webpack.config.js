@@ -1,21 +1,24 @@
 const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PurgeCssPlugin = require("purgecss-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require("path");
+const glob = require("glob");
 
 module.exports = {
 	mode: process.env.NODE_ENV,
-	entry: "./src/main.js",
+	entry: path.join(__dirname, "/src/main.js"),
 	output: {
 		filename: process.env.NODE_ENV === "development" ? "main.js" : "main.[contenthash:8].js",
-		path: path.resolve(__dirname, "dist")
+		path: path.join(__dirname, "/dist"),
+		publicPath: "/"
 	},
 	resolve: {
 		modules: [
-			path.resolve(__dirname, "src"),
-			"node_modules"
+			path.join(__dirname, "/src"),
+			path.join(__dirname, "/node_modules")
 		]
 	},
 	module: {
@@ -61,11 +64,14 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./src/main.html",
+			template: path.join(__dirname, "/src/main.html"),
 			filename: "index.html"
 		}),
 		new MiniCssExtractPlugin({
 			filename: process.env.NODE_ENV === "development" ? "main.css" : "main.[contenthash:8].css",
+		}),
+		new PurgeCssPlugin({
+			paths: glob.sync(path.join(__dirname, "/src/**/*"), { nodir: true })
 		})
 	],
 	optimization: {

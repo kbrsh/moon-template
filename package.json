@@ -21,6 +21,7 @@
 		"moon-compiler": "latest",
 		"moon-loader": "latest",
 		"optimize-css-assets-webpack-plugin": "latest",
+		"purgecss-webpack-plugin": "latest",
 		"terser-webpack-plugin": "latest",
 		"webpack": "latest",
 		"webpack-cli": "latest",
