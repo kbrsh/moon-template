@@ -16,6 +16,9 @@ module.exports = {
 		publicPath: "/"
 	},
 	resolve: {
+		alias: {
+			moon: process.env.NODE_ENV === "development" ? "moon/dist/moon.js" : "moon"
+		},
 		modules: [
 			path.join(__dirname, "/src"),
 			path.join(__dirname, "/node_modules")
