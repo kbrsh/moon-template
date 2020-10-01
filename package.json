@@ -3,13 +3,14 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "NODE_ENV=\"development\" webpack-dev-server --config webpack.config.js",
-		"build": "NODE_ENV=\"production\" webpack --config webpack.config.js"
+		"dev": "cross-env NODE_ENV=\"development\" webpack-dev-server --config webpack.config.js",
+		"build": "cross-env NODE_ENV=\"production\" webpack --config webpack.config.js"
 	},
 	"dependencies": {
 		"moon": "latest"
 	},
 	"devDependencies": {
+		"cross-env": "latest",
 		"@babel/core": "latest",
 		"@babel/preset-env": "latest",
 		"babel-loader": "latest",
